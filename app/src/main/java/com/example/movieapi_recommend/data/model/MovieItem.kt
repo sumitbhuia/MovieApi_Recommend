@@ -1,6 +1,7 @@
 package com.example.movieapi_recommend.data.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 //Represents JSON Object
@@ -9,6 +10,7 @@ import com.google.gson.annotations.SerializedName
 @Entity("popular_movies")
 data class MovieItem(
 
+    @PrimaryKey
     @SerializedName("id")
     val MovieId:Int ,
     @SerializedName("overview")

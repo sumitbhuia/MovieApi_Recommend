@@ -1,6 +1,5 @@
 package com.example.movieapi_recommend.domain.repository
 
-import com.example.movieapi_recommend.data.db.TMDBDatabase
 import com.example.movieapi_recommend.data.model.MovieItem
 
 interface MovieRepository{

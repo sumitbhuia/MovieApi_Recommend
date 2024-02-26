@@ -61,7 +61,7 @@ dependencies {
 
 //Dagger
     implementation ("com.google.dagger:dagger:2.50")
-    ksp("com.google.dagger:dagger-compiler:2.50")
+    kapt("com.google.dagger:dagger-compiler:2.50")
 
 
 
@@ -85,10 +85,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     // Annotation processor
-   // kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
 
     // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
+   // implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
 
 
 
@@ -100,7 +100,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     // To use Kotlin annotation processing tool (kapt)
-    ksp("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
 

@@ -1,5 +1,6 @@
 package com.example.movieapi_recommend.presentation.injections
 
+import com.example.movieapi_recommend.domain.repository.MovieRepositoryImpl
 import com.example.movieapi_recommend.domain.repository.MovieRepository
 import com.example.movieapi_recommend.domain.usecases.GetMoviesUseCase
 import com.example.movieapi_recommend.domain.usecases.UpdateMovieUseCase

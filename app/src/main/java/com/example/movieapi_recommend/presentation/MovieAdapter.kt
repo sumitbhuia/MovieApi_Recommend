@@ -12,18 +12,6 @@ import com.example.movieapi_recommend.databinding.MovieItemBinding
 
 class MovieAdapter:RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
     private val movieList=ArrayList<MovieItem>()
-    class MyViewHolder(private val binding: MovieItemBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie:MovieItem){
-            binding.movieTitle.text = movie.title
-            binding.movieDesc.text = movie.overview
-
-            val posterURL ="https://image.tmdb.org/t/p/w500/"+movie.posterPath
-
-            Glide.with(binding.imageView.context)
-                .load(posterURL)
-                .into(binding.imageView)
-        }
-    }
 
     fun setList(movies:List<MovieItem>){
         movieList.clear()
@@ -49,4 +37,18 @@ class MovieAdapter:RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(movieList[position])
     }
+
+    class MyViewHolder(private val binding: MovieItemBinding):RecyclerView.ViewHolder(binding.root) {
+        fun bind(movie:MovieItem){
+            binding.movieTitle.text = movie.title
+            binding.movieDesc.text = movie.overview
+
+            val posterURL ="https://image.tmdb.org/t/p/w500/"+movie.posterPath
+
+            Glide.with(binding.imageView.context)
+                .load(posterURL)
+                .into(binding.imageView)
+        }
+    }
+
 }

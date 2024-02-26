@@ -1,8 +1,8 @@
 package com.example.movieapi_recommend.presentation.injections
 
 import android.content.Context
-import androidx.room.Dao
 import androidx.room.Room
+import com.example.movieapi_recommend.data.api.TMDBService
 import com.example.movieapi_recommend.data.db.MovieDAO
 import com.example.movieapi_recommend.data.db.TMDBDatabase
 import dagger.Module
@@ -21,7 +21,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideMovieDao(tmdbDatabase: TMDBDatabase):MovieDAO{
-        return tmdbDatabase.getMovieDAO()
+    fun provideMovieDao(tmdbDatabase: TMDBDatabase):MovieDAO {
+        return tmdbDatabase.movieDao()
     }
 }

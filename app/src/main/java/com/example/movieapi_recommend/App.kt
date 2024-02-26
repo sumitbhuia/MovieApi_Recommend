@@ -1,13 +1,7 @@
 package com.example.movieapi_recommend
 
 import android.app.Application
-import com.example.movieapi_recommend.presentation.injections.AppComponent
-import com.example.movieapi_recommend.presentation.injections.AppModule
-import com.example.movieapi_recommend.presentation.injections.DaggerAppComponent
-import com.example.movieapi_recommend.presentation.injections.Injector
-import com.example.movieapi_recommend.presentation.injections.MovieSubComponent
-import com.example.movieapi_recommend.presentation.injections.NetModule
-import com.example.movieapi_recommend.presentation.injections.RemoteDataModule
+import com.example.movieapi_recommend.presentation.injections.*
 
 class App:Application(),Injector {
     private lateinit var appComponent : AppComponent

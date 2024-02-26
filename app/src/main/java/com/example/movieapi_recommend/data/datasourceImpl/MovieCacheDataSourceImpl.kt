@@ -1,7 +1,6 @@
 package com.example.movieapi_recommend.data.datasourceImpl
 
 import com.example.movieapi_recommend.data.datasource.MovieCacheDataSource
-import com.example.movieapi_recommend.data.model.Movie
 import com.example.movieapi_recommend.data.model.MovieItem
 
 class MovieCacheDataSourceImpl: MovieCacheDataSource {

@@ -14,24 +14,6 @@ class MovieRepositoryImpl(
     override suspend fun getMovie(): List<MovieItem> {
         return getMoviesFromCache()
     }
-    private suspend fun getMoviesFromCache(): List<MovieItem> {
-        lateinit var movies : List<MovieItem>
-        try {
-            movies = movieCacheDataSource.getMovieFromCache()
-        }catch (exception:Exception){
-            //Logcat
-        }
-        if(movies.isNotEmpty()){
-            return movies
-        }
-        else{
-            movies = getMoviesFromROOM()
-            movieLocalDataSource.saveMovieToDB(movies)
-        }
-        return movies
-
-
-    }
     override suspend fun updateMovies(): List<MovieItem> {
        val newListOfMovies = getMoviesFromAPI()
         movieLocalDataSource.clearAll()
@@ -41,7 +23,7 @@ class MovieRepositoryImpl(
         return newListOfMovies
 
     }
-    private suspend fun getMoviesFromAPI(): List<MovieItem> {
+    suspend fun getMoviesFromAPI(): List<MovieItem> {
         lateinit var movies : List<MovieItem>
 
         try {
@@ -62,13 +44,13 @@ class MovieRepositoryImpl(
         return movies
 
     }
-    private suspend fun getMoviesFromROOM():List<MovieItem>{
+    suspend fun getMoviesFromROOM():List<MovieItem>{
         lateinit var movies : List<MovieItem>
 
         //Store what ever data available from local DB to movies and the check fo if , else
         try {
             movies = movieLocalDataSource.getMovieFromDB()
-        }catch (_:java.lang.Exception){
+        }catch (exception:Exception){
 
         }
         // If list is not empty , return list
@@ -81,5 +63,23 @@ class MovieRepositoryImpl(
             movieLocalDataSource.saveMovieToDB(movies)
         }
         return movies
+    }
+    private suspend fun getMoviesFromCache(): List<MovieItem> {
+        lateinit var movies : List<MovieItem>
+        try {
+            movies = movieCacheDataSource.getMovieFromCache()
+        }catch (exception:Exception){
+            //Logcat
+        }
+        if(movies.isNotEmpty()){
+            return movies
+        }
+        else{
+            movies = getMoviesFromROOM()
+            movieCacheDataSource.saveMovieToCache(movies)
+        }
+        return movies
+
+
     }
 }
